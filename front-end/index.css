@@ -1,3 +1,8 @@
+@font-face {
+    font-family: "HelveticaNeue";
+    src: url("fonts/HelveticaNeueLTPro-Lt.otf"); 
+}
+
 #alchemista_image{
 	display: block;
 	width: 75px;
@@ -9,12 +14,30 @@
 
 }
 #title{
-	font-family: 'Quicksand', sans-serif;
+	font-family: 'HelveticaNeue', sans-serif;
 	text-align: left;
-  color: rgb(62, 142, 222);
+  color: #9b9b9b;
   margin: 0;
-  padding: 10px 60px 2px;
+  padding: 10px 60px 0px;
 }
+
+#courseName {
+  color: #a1c1e4;
+}
+
+h2 {
+  font-size: 25px;
+}
+
+#distReqs{
+  font-family: 'HelveticaNeue', sans-serif;
+  text-align: left;
+  color: #9b9b9b;
+  font-size: 23px;
+  margin: 0;
+  padding: 0px 60px 2px;
+}
+
 .autocomplete-suggestions { border: 1px solid #999; background: #fff; cursor: default; overflow: auto; }
 .autocomplete-suggestion { padding: 10px 5px; font-size: 1.2em; white-space: nowrap; overflow: hidden; }
 .autocomplete-selected { background: #f0f0f0; }
@@ -37,12 +60,12 @@
   color: #858585;
 }
 body{
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'HelveticaNeue', sans-serif;
   
 }
 
 #dates{
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'HelveticaNeue', sans-serif;
   color:#c7da2c;
   font-weight: bold;
 }
@@ -128,13 +151,8 @@ li{
   color: #FDEB72;
 }
 
-.classInfoElement {
-  font-weight: bold;
-  color: rgb(62, 142, 222);
-}
-
 .classInfo {
-
+  color: #9b9b9b;
 }
 
 
