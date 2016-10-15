@@ -1,0 +1,184 @@
+#alchemista_image{
+	display: block;
+	width: 75px;
+	margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px
+  padding: 10px 10px 20px;
+  padding-bottom: 10px;
+
+}
+#title{
+	font-family: 'Quicksand', sans-serif;
+	text-align: center;
+	color:#c7da2c;
+  margin: 0;
+  padding: 10px 10px 2px;
+}
+.autocomplete-suggestions { border: 1px solid #999; background: #fff; cursor: default; overflow: auto; }
+.autocomplete-suggestion { padding: 10px 5px; font-size: 1.2em; white-space: nowrap; overflow: hidden; }
+.autocomplete-selected { background: #f0f0f0; }
+.autocomplete-suggestions strong { font-weight: normal; color: #c7da2c; }
+#searchfield form .biginput {
+  width: 600px;
+  height: 40px;
+  padding: 0 10px 0 10px;
+  background-color: #fff;
+  border: 1px solid #c8c8c8;
+  border-radius: 3px;
+  color: #aeaeae;
+  font-weight:normal;
+  font-size: 1.5em;
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+#searchfield form .biginput:focus {
+  color: #858585;
+}
+body{
+  font-family: 'Quicksand', sans-serif;
+  
+}
+
+#dates{
+  font-family: 'Quicksand', sans-serif;
+  color:#c7da2c;
+  font-weight: bold;
+}
+
+.headcount{
+  width:80px;
+}
+
+.side_by_side{
+   position: relative;
+  
+  display: flex;
+
+}
+.side{
+ flex: 0.5;
+}
+.composition{
+  width: ;
+}
+
+.fullMenu{
+   -webkit-column-break-inside:avoid;
+    -moz-column-break-inside:avoid;
+    -o-column-break-inside:avoid;
+    -ms-column-break-inside:avoid;
+    column-break-inside:avoid;
+}
+
+.columns{
+    -webkit-column-count: 3; /* Chrome, Safari, Opera */
+    -moz-column-count: 3; /* Firefox */
+    column-count: 3;
+    -webkit-column-gap: 40px; /* Chrome, Safari, Opera */
+    -moz-column-gap: 40px; /* Firefox */
+    column-gap: 40px;
+    -webkit-column-rule-style: none; /* Chrome, Safari, Opera */
+    -moz-column-rule-style: none; /* Firefox */
+    column-rule-style: none;
+}
+h4{
+  font-weight: bold;
+}
+
+li{
+  font-size: 12px;
+}
+
+
+.btn-secondary:active {
+  background-color: #3e9bf4;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3e9bf4), color-stop(100%, #0469de));
+  background-image: -webkit-linear-gradient(top, #3e9bf4 0%, #0469de 100%);
+  background-image: linear-gradient(to bottom, #3e9bf4 0%, #0469de 100%);
+}
+
+
+/*Animation: */
+.loader {
+    border: 5px solid #f3f3f3; /* Light grey */
+    border-top: 5px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.commentButton{
+  border:none;
+  border-spacing: none;
+
+}
+
+.quantity{
+  color:red;
+}
+
+/*different method 
+
+ul li:nth-child(n+3) {
+    display:none;
+}
+
+span {
+    cursor: pointer;
+    color: #f00;
+}
+
+*/
+
+
+/*SHOW MORE TEST 
+
+
+
+.read-more-state {
+  display: none;
+}
+
+.read-more-target {
+  opacity: 0;
+  max-height: 0;
+  font-size: 0;
+  /*transition: .25s ease; 
+}
+
+.read-more-state:checked ~ .read-more-wrap .read-more-target {
+  opacity: 1;
+  font-size: inherit;
+  max-height: 999em;
+}
+
+.read-more-state ~ .read-more-trigger:before {
+  content: 'Show more';
+}
+
+.read-more-state:checked ~ .read-more-trigger:before {
+  content: 'Show less';
+}
+
+.read-more-trigger {
+  cursor: pointer;
+  display: inline-block;
+  padding: 0 .5em;
+  color: #666;
+  font-size: .9em;
+  line-height: 2;
+  border: 1px solid #ddd;
+  border-radius: .25em;
+}
+
+*/
+
+
