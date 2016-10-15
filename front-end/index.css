@@ -49,7 +49,7 @@ h2 {
   color: #9b9b9b;
   font-size: 23px;
   margin: 0;
-  padding: 0px 60px 2px;
+  padding: 0px 10px 2px;
 }
 
 .autocomplete-suggestions { border: 1px solid #999; background: #fff; cursor: default; overflow: auto; }
@@ -246,7 +246,10 @@ label{
 
 #cmtHeader {
   font-size: 30px;
-  background: linear-gradient(to right, white, #a1c1e4);
+  color: #9b9b9b;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(62, 142, 222, .2));
+  text-align: left;
+  padding-left: 10px;
 }
 #addcommentsbutton {
   text-align:center;
