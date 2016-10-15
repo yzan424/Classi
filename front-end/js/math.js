@@ -1,4 +1,4 @@
-function graph_math(){
+function graph_math(id){
         var margin = {top: 40, right: 20, bottom: 30, left: 40},
             width = 360 - margin.left - margin.right,
             height = 300 - margin.top - margin.bottom;
@@ -111,4 +111,5 @@ function graph_math(){
             };
         }
         request.send(null);
+        return false;
 }

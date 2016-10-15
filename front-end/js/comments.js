@@ -1,4 +1,3 @@
-console.log("omg we opened the file at least")
 var comments = [];
 var stars = [];
 var timestamp = [];
@@ -23,9 +22,10 @@ function init(courses, code) {
            // raw = request.responseText;
             //courses = JSON.parse(raw);
             //console.log(raw);
+            console.log(courses);
             for (i=0; i<courses.length; i++) {
 	            if (code == courses[i].Code) {
-	            	console.log(courses[i].Comments[0][0]);
+	            	// console.log(courses[i].Comments[0][0]);
 	            	index = i;
 	            	for (j=0; j<courses[i].Comments.length; j++) {
 		            	comments[j] = courses[i].Comments[j][0];
@@ -64,6 +64,7 @@ function sendcomments() {
 function postComments() {
 
 	document.getElementById("cmtHeader").innerHTML = header;
+	html = '<hr>';
 
 	for (i=0; i < comments.length; i++) {
 
@@ -81,7 +82,8 @@ function postComments() {
 	document.getElementById("addcomments").innerHTML = add_comments_default;
 }
 
-function displayStars() {
+function showStars() {
+	console.log("in showStars")
 	document.getElementById("addcomments").innerHTML = "";
 	newhtml = '';
 
@@ -159,5 +161,5 @@ function displayGrade() {
 }
 
 function getComments() {
-	displayStars(); 
+	showStars(); 
 }
