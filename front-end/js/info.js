@@ -1,15 +1,15 @@
 var courses = [];
 
-function displayCourseInfo(code) {
+function displayCourseInfo(id) {
     console.log(courses);
     var myCourse;
     for(c in courses) {
-        if(courses[c].Code == code) {
+        if(courses[c]._id == id) {
             myCourse = courses[c];
         }
     }
 
-    $("#courseID").html(code);
+    $("#courseID").html(myCourse.Code);
     $("#courseName").html(myCourse.Name);
     $("#distReqs").html(myCourse.Distribution);
     displayStars(myCourse.Stars);
@@ -45,7 +45,7 @@ $(function(){
                     raw = request.responseText;
                     courses = JSON.parse(raw);
 
-                    displayCourseInfo("COMP-20");
+                    displayCourseInfo("5801f6f3dc9106000390336d");
             }
     }
     request.send(null);
