@@ -6,7 +6,7 @@ var commentArray = [];
 var favoritesArray = [];
 var allMenus;
 $(function(){
-    //autocomplete([], false)
+/*    //autocomplete([], false)
     var uri = 'https://alchemista.herokuapp.com/getMenus'
     request.open("GET",uri, true);
     vex.open({
@@ -16,7 +16,7 @@ $(function(){
       overlayClosesOnClick: false,
       showCloseButton: false
 
-    });
+    });*/
     /*
     vex.dialog.open({
           input: "<style>.vex-custom-field-wrapper {margin: 1em 0;}.vex-custom-field-wrapper > label {display: inline-block;margin-bottom: .2em;}</style><div class='vex-custom-field-wrapper'><div class='vex-custom-input-wrapper'><div class='loader'></div></div></div>",

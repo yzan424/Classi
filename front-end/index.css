@@ -11,7 +11,7 @@
 #title{
 	font-family: 'Quicksand', sans-serif;
 	text-align: center;
-	color:#c7da2c;
+  color: rgb(62, 142, 222);
   margin: 0;
   padding: 10px 10px 2px;
 }
@@ -73,15 +73,17 @@ body{
 }
 
 .columns{
-    -webkit-column-count: 3; /* Chrome, Safari, Opera */
-    -moz-column-count: 3; /* Firefox */
-    column-count: 3;
+    -webkit-column-count: 1; /* Chrome, Safari, Opera */
+    -moz-column-count: 1; /* Firefox */
+    column-count: 1;
     -webkit-column-gap: 40px; /* Chrome, Safari, Opera */
     -moz-column-gap: 40px; /* Firefox */
     column-gap: 40px;
     -webkit-column-rule-style: none; /* Chrome, Safari, Opera */
     -moz-column-rule-style: none; /* Firefox */
     column-rule-style: none;
+    font-size: 20px;
+    width: 40%;
 }
 h4{
   font-weight: bold;
@@ -120,6 +122,16 @@ li{
   border-spacing: none;
 
 }
+
+#classInfo {
+
+}
+
+.classInfoElement {
+  font-weight: bold;
+  color: rgb(62, 142, 222);
+}
+
 
 /*different method 
 
