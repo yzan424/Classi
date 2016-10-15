@@ -1,0 +1,26 @@
+
+.star{
+	display: inline-block;
+	width: 20px;
+}
+
+#comments {
+    color: #676668;
+}
+
+.cmts {
+	font-size: 25px;
+	padding-bottom: 2%;
+}
+
+#cmtHeader {
+	font-size: 30px;
+	background: linear-gradient(to right, white, #a1c1e4);
+}
+#addcommentsbutton {
+	text-align:center;
+	font-family: "HelveticaNeue";
+    src: url("fonts/HelveticaNeueLTPro-Lt.otf");
+	background-color: #c3cedb;
+	font-size: 20px;
+}
