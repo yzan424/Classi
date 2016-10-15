@@ -120,7 +120,7 @@ body{
     -moz-column-rule-style: none; /* Firefox */
     column-rule-style: none;
     font-size: 20px;
-    width: 40%;
+    text-align: left;
     padding-left: 60px;
 }
 h4{
