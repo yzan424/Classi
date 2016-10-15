@@ -1,4 +1,3 @@
-var html = "";
 var courses = [];
 
 function displayCourseInfo(code) {
@@ -15,11 +14,15 @@ function displayCourseInfo(code) {
     $("#distReqs").html(myCourse.Distribution);
     displayStars(myCourse.Stars);
     $("#professor").html(myCourse.Professors);
-    $("#textbook").html(myCourse.Textbooks);
+    if(myCourse.Textbooks == null)
+        $("#textbook").html("No textbook");
+    else
+        $("#textbook").html(myCourse.Textbooks);
 
 }
 
 function displayStars(rating) {
+    var html = "";
     for(j=0; j <rating; j++) {
         html += '<span style="font-size:100%;color:#fdeb72;">&starf;</span>';
     }
@@ -28,7 +31,7 @@ function displayStars(rating) {
         html += '<span style="font-size:100%;color:#c5c1c1;">&star;</span>';
     }
 
-    $("#Stars").innerHTML = html;
+    $("#Stars").html(html);
 }
 
 $(function(){
@@ -41,7 +44,7 @@ $(function(){
                     raw = request.responseText;
                     courses = JSON.parse(raw);
 
-                    displayCourseInfo("COMP-40");
+                    displayCourseInfo("COMP-20");
             }
     }
     request.send(null);

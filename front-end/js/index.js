@@ -167,13 +167,6 @@ function autocomplete(clients, isNew){
 }
 */
 
-$(function() {
-    oFileIn = document.getElementById('my_file_input');
-    if(oFileIn.addEventListener) {
-        oFileIn.addEventListener('change', filePicked, false);
-    }
-});
-
 function filePicked(oEvent) {
     oFile = oEvent.target.files[0];
     isXLSX = properFormat(oFile.name)

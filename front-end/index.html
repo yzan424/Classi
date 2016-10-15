@@ -46,35 +46,18 @@
 							<option>in the last 6 months</option>
 							<option>in the last year</option>
 						</select>
-						<div class="form-group">
-							<label>_________or_________</label>
-							<label>From</label>
-							<input type="date" id= "firstDate">
-							<label>To</label>
-							<input type="date" id= "secondDate">
-						</div>   
-						<div class="form-group">
-							<label>or select a specific day:</label>
-							<input type="date" id= "oneDate">
-						</div>     
 						<div class="form-actions">
 							<button type="submit" onclick = "return retrieveData()" class="btn btn-form btn-primary">GO!</button> 
 						</div>
 						<div id = 'message padded'> </div>
 					</form>
-					<label>______________________</label>
-					<label>Add new menus:</label>
-					<input type="file" id="my_file_input"/>
-					<div class="form-actions padded">
-						<button type="submit" onclick = "return submitFile()" class="btn btn-form btn-secondary">Upload</button> 
-					</div>
-					<div class = 'warning_message padded'> </div>
+
 
 				</nav></div>
 				<div class="pane">           
 					<h1 id = "title"><span id = "courseID"></span>: <span id="courseName"></span></h1>
 					<h2 id = "distReqs"></h2>  
-					<div class = "padded columns" id = "menus">
+					<div class = "padded columns" style="padding-top: 0px;" "0px" id = "menus">
 						<span id = "Stars"></span> </br>
 						<img src = "img/instructor icon.png">
 							<span class = "classInfo" id = "professor"></span></br>
