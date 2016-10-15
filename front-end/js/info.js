@@ -32,6 +32,7 @@ function displayStars(rating) {
     }
 
     $("#Stars").html(html);
+
 }
 
 $(function(){
