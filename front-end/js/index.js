@@ -6,10 +6,10 @@ var commentArray = [];
 var favoritesArray = [];
 var allMenus;
 $(function(){
-/*    //autocomplete([], false)
+    //autocomplete([], false)
     var uri = 'https://alchemista.herokuapp.com/getMenus'
     request.open("GET",uri, true);
-    vex.open({
+    /*vex.open({
         //<style>.vex-custom-field-wrapper {margin: 50px 50px;}.vex-custom-field-wrapper > label {display: inline-block;margin-bottom: 10em;}</style>
       content:"  <h5>Loading...<h5><br><div class='loader'>",
       escapeButtonCloses: false,
@@ -22,56 +22,56 @@ $(function(){
           input: "<style>.vex-custom-field-wrapper {margin: 1em 0;}.vex-custom-field-wrapper > label {display: inline-block;margin-bottom: .2em;}</style><div class='vex-custom-field-wrapper'><div class='vex-custom-input-wrapper'><div class='loader'></div></div></div>",
     });
     */
-    request.onreadystatechange = function () {
-        if (request.readyState == 4 && request.status == 200) {
-            allMenus = JSON.parse(request.responseText);
-            var value = String(Object.keys(allMenus).length);
-            var clients = [];
-            var vendors = [];
-            //this creates an array of clients for the autocomplete.
-            for (x in allMenus){
-                if (clients.indexOf(allMenus[x]['Client/Organization']) == -1 && typeof allMenus[x]['Client/Organization'] === 'string'){
-                    clients.push(allMenus[x]['Client/Organization']);
-                }
-                if (vendors.indexOf(allMenus[x]['Daily Menu Description']) == -1 && typeof allMenus[x]['Daily Menu Description'] === 'string'  ){
-                    vendors.push(allMenus[x]['Daily Menu Description']);
-                }
-            }
-            //console.log(clients);
-            //console.log(vendors);
-            $('#autocompleteClient').autocomplete({lookup: clients});
-            $('#autocompleteVendor').autocomplete({lookup: vendors});
-            console.log('allMenus',allMenus)
-            loadMenus2();
-            uri = 'https://alchemista.herokuapp.com/getComments'
-            request.open("GET",uri, true);
-            request.onreadystatechange = function() {
-                if (request.readyState == 4 && request.status == 200) {
-                    initialArray = JSON.parse(request.responseText)
-                    //console.log(initialArray);
-                    for (var x =0; x < initialArray.length; x++){
-                        commentArray[initialArray[x].code] = initialArray[x].comment;
-                    }
-                    uri = 'https://alchemista.herokuapp.com/getFavorites'
-                    request.open("GET",uri, true);
-                    request.onreadystatechange = function() {
-                        if (request.readyState == 4 && request.status == 200) {
-                            initialArray = JSON.parse(request.responseText)
-                            for (var x =0; x < initialArray.length; x++){
-                                favoritesArray[initialArray[x].code] = initialArray[x].favorite;
-                            }
+    // request.onreadystatechange = function () {
+    //     if (request.readyState == 4 && request.status == 200) {
+    //         allClasses = JSON.parse(request.responseText);
+    //         var value = String(Object.keys(allMenus).length);
+    //         var clients = [];
+    //         var vendors = [];
+    //         //this creates an array of clients for the autocomplete.
+    //         for (x in allMenus){
+    //             if (clients.indexOf(allMenus[x]['Client/Organization']) == -1 && typeof allMenus[x]['Client/Organization'] === 'string'){
+    //                 clients.push(allMenus[x]['Client/Organization']);
+    //             }
+    //             if (vendors.indexOf(allMenus[x]['Daily Menu Description']) == -1 && typeof allMenus[x]['Daily Menu Description'] === 'string'  ){
+    //                 vendors.push(allMenus[x]['Daily Menu Description']);
+    //             }
+    //         }
+    //         //console.log(clients);
+    //         //console.log(vendors);
+    //         $('#autocompleteClient').autocomplete({lookup: clients});
+    //         $('#autocompleteVendor').autocomplete({lookup: vendors});
+    //         console.log('allMenus',allMenus)
+    //         loadMenus2();
+    //         uri = 'https://alchemista.herokuapp.com/getComments'
+    //         request.open("GET",uri, true);
+    //         request.onreadystatechange = function() {
+    //             if (request.readyState == 4 && request.status == 200) {
+    //                 initialArray = JSON.parse(request.responseText)
+    //                 //console.log(initialArray);
+    //                 for (var x =0; x < initialArray.length; x++){
+    //                     commentArray[initialArray[x].code] = initialArray[x].comment;
+    //                 }
+    //                 uri = 'https://alchemista.herokuapp.com/getFavorites'
+    //                 request.open("GET",uri, true);
+    //                 request.onreadystatechange = function() {
+    //                     if (request.readyState == 4 && request.status == 200) {
+    //                         initialArray = JSON.parse(request.responseText)
+    //                         for (var x =0; x < initialArray.length; x++){
+    //                             favoritesArray[initialArray[x].code] = initialArray[x].favorite;
+    //                         }
                             
-                        }
-                    }
-                    request.send(null);  
-                }
-            }
-            request.send(null);  
-            vex.close();
-        };
+    //                     }
+    //                 }
+    //                 request.send(null);  
+    //             }
+    //         }
+    //         request.send(null);  
+    //         vex.close();
+    //     };
         
-    }
-    request.send(null);
+    });
+//    request.send(null);
     
     /*
     var uri = 'https://stormy-ocean-48223.herokuapp.com/getMenuCount'
@@ -94,7 +94,7 @@ $(function(){
 
     
 
-});
+//});
 
 
 function loadMenus(){

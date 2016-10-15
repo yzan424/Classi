@@ -13,6 +13,7 @@
 	<script src="js/jquery-2.2.4.min.js"></script>
 	<script src="js/jquery.autocomplete.min.js"></script>
 	<script src="js/index.js"></script>
+	<script src="infojs/info.js"></script>
 	<script src="js/data_processing.js"></script>
 	<script src="js/moment.min.js"></script>
 	<script src="js/collapsePlugin.js"></script>
@@ -71,16 +72,15 @@
 
 				</nav></div>
 				<div class="pane">           
-					<h1 id = "title">COMP-0020: <span id="courseName">Web Programming</span></h1>
-					<h2 id = "distReqs">LA-Distribution-Mathematics, SoE-Engineering</h2>  
+					<h1 id = "title"><span id = "courseID"></span>: <span id="courseName"></span></h1>
+					<h2 id = "distReqs"></h2>  
 					<div class = "padded columns" id = "menus">
-						<span id = "Stars"> ★★★★★ </span> </br>
+						<span id = "Stars"></span> </br>
 						<img src = "img/instructor icon.png">
-							<span class = "classInfo"> Ming Chow </span></br>
+							<span class = "classInfo" id = "professor"></span></br>
 						<img src = "img/textbook icon.png">
-							<span class = "classInfo">No textbook </span> </br>
-						<img src = "img/recommend icon.png">
-							<span class = "classInfo">None for real </span> </br>
+							<span class = "classInfo" id = "textbook"></span> </br>
+
 					</div>
 				</div>
 			</div>

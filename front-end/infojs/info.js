@@ -1,9 +1,25 @@
 var html = "";
-stars = [1, 5, 3, 4];
+var courses = [];
+
+function displayCourseInfo(code) {
+    console.log(courses);
+    var myCourse;
+    for(c in courses) {
+        if(courses[c].Code == code) {
+            myCourse = courses[c];
+        }
+    }
+
+    $("#courseID").html(code);
+    $("#courseName").html(myCourse.Name);
+    $("#distReqs").html(myCourse.Distribution);
+    displayStars(myCourse.Stars);
+    $("#professor").html(myCourse.Professors);
+    $("#textbook").html(myCourse.Textbooks);
+
+}
 
 function displayStars(rating) {
-
-
     for(j=0; j <rating; j++) {
         html += '<span style="font-size:100%;color:#fdeb72;">&starf;</span>';
     }
@@ -12,5 +28,21 @@ function displayStars(rating) {
         html += '<span style="font-size:100%;color:#c5c1c1;">&star;</span>';
     }
 
-    document.getElementById("avgRating").innerHTML = html;
+    $("#Stars").innerHTML = html;
 }
+
+$(function(){
+    var url = "https://classiapp.herokuapp.com/getclasses"
+
+    request = new XMLHttpRequest();
+    request.open("GET", url, true);
+    request.onreadystatechange = function() {
+            if(request.readyState == 4 && request.status == 200) {
+                    raw = request.responseText;
+                    courses = JSON.parse(raw);
+
+                    displayCourseInfo("COMP-40");
+            }
+    }
+    request.send(null);
+})
