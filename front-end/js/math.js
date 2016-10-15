@@ -1,4 +1,5 @@
-function graph_math(id){
+function graph_math(currid){
+    console.log(currid)
         var margin = {top: 40, right: 20, bottom: 30, left: 40},
             width = 360 - margin.left - margin.right,
             height = 300 - margin.top - margin.bottom;
@@ -24,7 +25,7 @@ function graph_math(id){
           .attr('class', 'd3-tip')
           .offset([-10, 0])
           .html(function(d) {
-            return "<strong>Frequency:</strong> <span style='color:red'>" + d.frequency + "</span>";
+            return "<strong>" + Math.round(d.frequency * 10000) / 100 + "%</strong> of students received " + d.letter + "'s";
           })
 
         var svg = d3.select("#placeholder").append("svg")
@@ -61,7 +62,7 @@ function graph_math(id){
             if (request.readyState == 4 && request.status == 200) {
                 var testGrades = JSON.parse(request.responseText);
                 for (var i = 0; i < testGrades.length; i++) {
-                    if (testGrades[i]._id == "580209d1426297000356e26f") {
+                    if (testGrades[i]._id == currid) {
                         for (var j = 0; j < testGrades[i].Grades.length; j++) {
                             dict[testGrades[i].Grades[j]] += 1;
                             sum += 1.0
