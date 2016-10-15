@@ -9,20 +9,20 @@ function displayCourseInfo(id) {
         }
     }
     if(myCourse.Code == null)
-        $("#courseID").html("N/A");
+        $("#courseID").html("N/A" + ":");
     else
-        $("#courseID").html(myCourse.Code);
+        $("#courseID").html(myCourse.Code + ":");
     $("#courseName").html(myCourse.Name);
     $("#distReqs").html(myCourse.Distribution);
     if(myCourse.Average_Star == null) 
             displayStars(0);
     else
         displayStars(myCourse.Average_Star);
-    $("#professor").html(myCourse.Professors);
+    $("#professor").html("<img src = 'img/instructor icon.png'>  " + myCourse.Professors);
     if(myCourse.Textbooks == null)
-        $("#textbook").html("No textbook");
+        $("#textbook").html("<img src = 'img/textbook icon.png'> No textbook");
     else
-        $("#textbook").html(myCourse.Textbooks);
+        $("#textbook").html("<img src = 'img/textbook icon.png'>  " + myCourse.Textbooks);
 
 }
 
