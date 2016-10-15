@@ -97,12 +97,12 @@ li{
 }
 
 
-.btn-secondary:active {
+/*.btn-secondary:active {
   background-color: #3e9bf4;
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3e9bf4), color-stop(100%, #0469de));
   background-image: -webkit-linear-gradient(top, #3e9bf4 0%, #0469de 100%);
   background-image: linear-gradient(to bottom, #3e9bf4 0%, #0469de 100%);
-}
+}*/
 
 
 /*Animation: */

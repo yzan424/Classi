@@ -1,47 +1,60 @@
 var comments = [];
 var stars = [];
 var timestamp = [];
-
+var newgrade = "";
 var header = "Comments";
 var html = '<hr>'; 
 var newhtml = "";
 var newstars = "";
-comments = ["hi", "yo", "classi", "test"];
-stars = [1, 5, 3, 4];
-timestamp = ["10/31/1995", "12/1/2006", "11/11/1999", "12/4/2015"];
-grades = ["A", "B", "C", "D"];
+var courses = "";
 var index;
+var end;
+var add_comments_default = '<button id="addcommentsbutton" type="submit" onclick="return getComments()" class="btn btn-form btn-secondary">add comment</button>';
 
-function init(id) {
+function init(code) {
 	var url = "https://classiapp.herokuapp.com/getclasses";
 	request = new XMLHttpRequest();
-    request.open("GET", url, true);
+    request.open("GET", url);
 
     request.onreadystatechange = function() {
         if(request.readyState == 4 && request.status == 200) {
             raw = request.responseText;
             courses = JSON.parse(raw);
 
-            for (i=0; i<cources.length; i++) {
-            	if (id = cources[i][id]) {
-            		index = i;
-            		comments = cources[i][Comments];
-            		//timestamp = cources[i][]
-            		grades = cources[i][Grades];
-            		stars = cources[i][Stars];
-            	}
+            for (i=0; i<courses.length; i++) {
+	            if (code == courses[i].Code) {
+	            	console.log(courses[i].Comments[0][0]);
+	            	index = i;
+	            	for (j=0; j<courses[i].Comments.length; j++) {
+		            	comments[j] = courses[i].Comments[j][0];
+		            	stars[j] = courses[i].Comments[j][1];
+		            	timestamp[j] = courses[i].Comments[j][2];
+	            	}
+	            }
             }
+            end = courses[index].Comments.length;
+            postComments();
         }
     }
     request.send(null)
 }
 
 function sendcomments() {
-	var url = "https://classiapp.herokuapp.com/getclasses";
-	request = new XMLHttpRequest();
-    request.open("POST", url, true);
 
-    /* finish! */
+	var url = "https://classiapp.herokuapp.com/newClassInfo";
+	request = new XMLHttpRequest();
+
+	request.open("POST", url);
+    request.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+    
+	request.onreadystatechange = function() {
+    	if (request.readyState == 4 && request.status == 200) {
+    		console.log("success");
+    	}
+	}
+
+    request.send("comment=" + comments[end] + "&star=" + stars[end] +"&time=" + timestamp[end] + "&grade=" + newgrade + "&code=" + courses[index].Code); 
+    end = end + 1;
 }
 
 function postComments() {
@@ -50,7 +63,7 @@ function postComments() {
 
 	for (i=0; i < comments.length; i++) {
 
-		for(j=0; j <stars[i]; j++) {
+		for(j=0; j < stars[i]; j++) {
 			html += '<span style="font-size:150%;color:#fdeb72;">&starf;</span>';
 		}
 
@@ -61,16 +74,18 @@ function postComments() {
 		html += "<br>" + '<div class="cmts">' + '"' + comments[i] + '"' + '</div>' + timestamp[i] + "<hr>";
 	}
 	document.getElementById("comments").innerHTML = html;
+	document.getElementById("addcomments").innerHTML = add_comments_default;
 }
 
 function displayStars() {
-	newhtml = '<hr>';
+	document.getElementById("addcomments").innerHTML = "";
+	newhtml = '';
 
 	newhtml += '<div class="star"; onclick= redisplayStars(1)><span style="font-size:150%;color:#c5c1c1;">&star;</span></div>';
 	newhtml += '<div class="star"; onclick= redisplayStars(2)><span style="font-size:150%;color:#c5c1c1;">&star;</span></div>';
 	newhtml += '<div class="star"; onclick= "redisplayStars(3)"><span style="font-size:150%;color:#c5c1c1;">&star;</span></div>';
 	newhtml += '<div class="star"; onclick= "redisplayStars(4)"><span style="font-size:150%;color:#c5c1c1;">&star;</span></div>';
-	newhtml += '<div class="star"; onclick= "redisplayStars(5)"><span style="font-size:150%;color:#c5c1c1;">&star;</span></div>';
+	newhtml += '<div class="star"; onclick= "redisplayStars(5)"><span style="font-size:150%;color:#c5c1c1;">&star;</span></div><hr>';
 
 	document.getElementById("newcomments").innerHTML = newhtml;
 }
@@ -79,9 +94,9 @@ function redisplayStars(count) {
 
 	newstar = [];
 	newstar[0] = count;
-	stars = newstar.concat(stars);
+	stars = stars.concat(newstar);
 
-	newhtml = "<hr>";
+	newhtml = "";
 	for (i=0; i<count; i++) {
 		newhtml += '<span style="font-size:150%;color:#fdeb72;">&starf;</span>';
 	}
@@ -104,32 +119,30 @@ function getTimeStamp() {
     var newtime = [];
     newtime[0] = month + "/" + day + "/" + year;
 
-    timestamp = newtime.concat(timestamp);
+    timestamp = timestamp.concat(newtime);
 }
 
 function recordComment() {
 	var commentText = [];
 	commentText[0] = document.getElementById("comment").value;
 
-	comments = commentText.concat(comments);
+	comments = comments.concat(commentText);
 
 	getTimeStamp();
 	document.getElementById("newcomments").innerHTML = "";
 	html = '<hr>';
+	sendcomments();
 	postComments();
 }
 
 function displayCommentBox() {
-	document.getElementById("newcomments").innerHTML += '<textarea rows="4" cols="50" id="comment" form="usrform" placeholder="Comments..."></textarea>';
+	document.getElementById("newcomments").innerHTML += '<textarea rows="4" cols="50" id="comment" form="usrform" placeholder="Comments..."></textarea><hr>';
 
 	document.getElementById("newcomments").innerHTML += '<div class="form-actions padded"><button type="submit" onclick="recordComment()" class="btn btn-form btn-secondary">submit</button></div>';	
 }
 
 function recordGrade(grade) {
-	var newgrade = []
-	newgrade[0] = grade;
-
-	grades = newgrade.concat(grades);
+	var newgrade = grade;
 
 	document.getElementById("newcomments").innerHTML = newstars + "<br>" 
 		+ "Grade: " + grade + "<br>";
@@ -138,9 +151,8 @@ function recordGrade(grade) {
 }
 
 function displayGrade() {
-	 document.getElementById("newcomments").innerHTML += '<select class="form-control padded" onchange="recordGrade(value)"><option>grade</option><option value="A+">A+</option><option value="A">A</option><option value="A-">A-</option><option value="B+">B+</option><option value="B">B</option><option value="B-">B-</option><option value="C+">C+</option><option value="C">C</option><option value="C-">C-</option><option value="D+">D+</option><option value="D">D</option><option value="D-">D-</option><option value="F">F</option></select>';
+	 document.getElementById("newcomments").innerHTML += '<select class="form-control padded" onchange="recordGrade(value)"><option>grade</option><option value="A+">A+</option><option value="A">A</option><option value="A-">A-</option><option value="B+">B+</option><option value="B">B</option><option value="B-">B-</option><option value="C+">C+</option><option value="C">C</option><option value="C-">C-</option><option value="D+">D+</option><option value="D">D</option><option value="D-">D-</option><option value="F">F</option></select><hr>';
 }
-
 
 function getComments() {
 	displayStars(); 
