@@ -23,6 +23,7 @@
     </script>
     <link rel="stylesheet" href="css/vex.css" />
     <link rel="stylesheet" href="css/vex-theme-os.css" />
+    <link rel="stylesheet" href="comments.css" />
 </head>
 
 <body>
@@ -80,11 +81,14 @@
                     <div class="form-actions padded">
                         <button type="submit" onclick="return postComments()" class="btn btn-form btn-secondary">comments</button>
                     </div>
-                    <div id="comments" </div>
-                        <!-- end Julia's test data -->
+                    <div class="form-actions padded">
+                        <button type="submit" onclick="return getComments()" class="btn btn-form btn-secondary">add comment</button>
+                    </div>
+                    <div id="newcomments"> </div>
+                    <div id="comments"> </div>
+                    <!-- end Julia's test data -->
                 </div>
             </div>
-        </div>
 </body>
 
 </html>
