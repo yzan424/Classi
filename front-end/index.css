@@ -3,6 +3,10 @@
   src: url("fonts/HelveticaNeueLTPro-Lt.otf");
 }
 
+html {
+  font-family: "HelveticaNeue";
+}
+
 #block_container
 {
     text-align:center;
@@ -18,15 +22,6 @@
   float: left
 }
 
-#alchemista_image{
-	display: block;
-	width: 75px;
-	margin-left: auto;
-  margin-right: auto;
-  margin-top: 10px
-  padding: 10px 10px 20px;
-  padding-bottom: 10px;
-
 }
 #title{
   font-family: 'HelveticaNeue';
@@ -34,6 +29,10 @@
   color: #9b9b9b;
   margin: 0;
   padding: 10px 60px 0px;
+}
+
+#courseID {
+  color: #9b9b9b;
 }
 
 #courseName {
@@ -258,4 +257,8 @@ label{
   font-size: 20px;
 }
 
+#white {
+  visibility: hidden;
+
+}
 
