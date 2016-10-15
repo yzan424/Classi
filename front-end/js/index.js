@@ -7,6 +7,7 @@ var favoritesArray = [];
 var allMenus;
 $(function(){
     //autocomplete([], false)
+    /*
     var uri = 'https://alchemista.herokuapp.com/getMenus'
     request.open("GET",uri, true);
     vex.open({
@@ -17,11 +18,12 @@ $(function(){
       showCloseButton: false
 
     });
+    */
     /*
     vex.dialog.open({
           input: "<style>.vex-custom-field-wrapper {margin: 1em 0;}.vex-custom-field-wrapper > label {display: inline-block;margin-bottom: .2em;}</style><div class='vex-custom-field-wrapper'><div class='vex-custom-input-wrapper'><div class='loader'></div></div></div>",
     });
-    */
+    
     request.onreadystatechange = function () {
         if (request.readyState == 4 && request.status == 200) {
             allMenus = JSON.parse(request.responseText);
@@ -96,6 +98,7 @@ $(function(){
 
 });
 
+/*
 
 function loadMenus(){
     var request = new XMLHttpRequest;
@@ -134,6 +137,7 @@ function loadMenus2(){
     }
     request.send(null);
 }
+*/
 
 /*
 function loadComments(){
@@ -167,73 +171,6 @@ function autocomplete(clients, isNew){
 }
 */
 
-$(function() {
-    oFileIn = document.getElementById('my_file_input');
-    if(oFileIn.addEventListener) {
-        oFileIn.addEventListener('change', filePicked, false);
-    }
-});
-
-function filePicked(oEvent) {
-    oFile = oEvent.target.files[0];
-    isXLSX = properFormat(oFile.name)
-}
-
-function submitFile(){
-    if (oFile == null) {
-          $('div.warning_message').html('You must choose a file.');
-          return;
-    }
-    if(isXLSX){
-        $('div.warning_message').html('');
-        var formData = new FormData();
-        formData.append("excelFile", oFile);
-        var request = new XMLHttpRequest();
-        request.open("POST", "https://alchemista.herokuapp.com/newMenus");
-        request.send(formData);
-        $('div.warning_message').html('<div class="loader"></div>');
-        request.onreadystatechange = function(){
-            if (request.readyState == 4 && request.status == 200) {
-              //  loadComments();
-                loadMenus();
-                $('div.warning_message').html('Done!');
-            }else if (request.readyState == 4 && request.status == 503){
-              // loadComments(); 
-               loadMenus();
-               $('div.warning_message').html('This is taking a while... but should be fine! Just reload.');
-               console.log('readyState = ' + request.readyState)
-               console.log('readyState = ' + request.status)
-            }else{
-                console.log('readyState = ' + request.readyState)
-                console.log('readyState = ' + request.status)
-                 $('div.warning_message').html('Done!');
-                 loadMenus();
-                //$('div.warning_message').html('There was a problem. Try again.'); 
-            }
-        };
-    }else{ 
-        $('div.warning_message').html('WARNING: the file has to be in .xlsx format');
-    }
-}
-
-function properFormat(filename) {
-    var parts = filename.split('.');
-    var ext = parts[parts.length - 1];
-    ext = ext.toLowerCase();
-    return ext == 'xlsx' ? true : false;
-}
-
-
-function loader(text){
-    vex.open({
-        //<style>.vex-custom-field-wrapper {margin: 50px 50px;}.vex-custom-field-wrapper > label {display: inline-block;margin-bottom: 10em;}</style>
-      content:"  <h5>"+text+"<h5><br><div class='loader'>",
-      escapeButtonCloses: false,
-      overlayClosesOnClick: false,
-      showCloseButton: false
-
-    });
-}
 /*
 $(function(){
     
