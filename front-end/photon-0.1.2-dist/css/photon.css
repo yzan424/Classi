@@ -376,12 +376,10 @@ h6 {
 }
 
 .btn-primary {
-  border-color: #C7DA2C;
-  border-bottom-color: #a3b41f;
-  background-color: #C7DA2C;
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #C7DA2C), color-stop(100%, #a3b41f));
-  background-image: -webkit-linear-gradient(top, #C7DA2C 0%, #a3b41f 100%);
-  background-image: linear-gradient(to bottom, #C7DA2C 0%, #a3b41f 100%);
+  border-color: #a1c1e4;
+  border-bottom-color: #a1c1e4;
+  background-color: #a1c1e4;
+  align-content: center:=; 
 }
 .btn-primary:active {
   background-color: #3e9bf4;
@@ -642,6 +640,7 @@ textarea {
 
 .form-actions .btn {
   margin-right: 10px;
+  text-align: center;
 }
 .form-actions .btn:last-child {
   margin-right: 0;

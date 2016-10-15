@@ -5,19 +5,24 @@
     <title>Alchemista</title>
     <link rel="stylesheet" href="photon-0.1.2-dist/css/photon.css">
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="index.css">
+
 
     <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
     <!-- not sure why I need both the local and Google link for jQuery but doesnt seem to work without both... wtf -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <script src="js/jquery-2.2.4.min.js"></script>
     <script src="js/jquery.autocomplete.min.js"></script>
+    <script src="js/info.js"></script>
     <script src="js/index.js"></script>
-    <script src="js/data_processing.js"></script>
+    <script src="js/data.js"></script>
     <script src="js/moment.min.js"></script>
     <script src="js/collapsePlugin.js"></script>
     <script type="text/javascript" src="http://viralpatel.net/blogs/demo/jquery/jquery.shorten.1.0.js"></script>
     <script src = 'js/vex.combined.min.js'></script>
     <script>vex.defaultOptions.className = 'vex-theme-os';</script>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
     <link rel="stylesheet" href="css/vex.css" />
     <link rel="stylesheet" href="css/vex-theme-os.css" />
   </head>
@@ -28,51 +33,191 @@
         <div class="pane-group">
           <div class="pane pane-sm sidebar">
             <nav class="nav-group padded">
-              <img src="img/alchemista.png" alt="Alchemista Logo" id = "alchemista_image">
-                <form id = "menuForm">   
-                  <div class="form-group">
-                    <label>Client</label>
-                    <input type="text" name= "client" class="biginput form-control" placeholder="Client" id="autocompleteClient">
-                     <label>Vendor</label>
-                    <input type="text" name= "vendor" class="biginput form-control" placeholder="Vendor" id="autocompleteVendor">
-                  </div>
-                  <label>Choose a Time Frame:</label>
-                  <select id = "timeFrame" class="form-control padded">
+              <div class="logo">
+                <font color = #a1c1e4 size = "6px">CLASSI</font>
+              </div>
+              <br>
+                <form id = "classForm">   
+                  <select id = "distribution" class="form-control padded">
                     <option>--</option>
-                    <option>in the last month</option>
-                    <option>in the last 3 months</option>
-                    <option>in the last 6 months</option>
-                    <option>in the last year</option>
+                    <option>Writing</option>
+                    <option>Language</option>
+                    <option>World Civilization</option>
+                    <option>Arts</option>
+                    <option>Humanities</option>
+                    <option>Social Sciences</option>
+                    <option>Mathematics</option>  
+                    <option>Natural Sciences</option>  
+                    <option>CS</option>             
                   </select>
-                   <div class="form-group">
-                    <label>_________or_________</label>
-                    <label>From</label>
-                     <input type="date" id= "firstDate">
-                     <label>To</label>
-                     <input type="date" id= "secondDate">
-                  </div>   
-                   <div class="form-group">
-                    <label>or select a specific day:</label>
-                     <input type="date" id= "oneDate">
-                  </div>     
-                  <div class="form-actions">
-                    <button type="submit" onclick = "return retrieveData()" class="btn btn-form btn-primary">GO!</button> 
+                  <label>by Distribution</label>
+                  <br>
+                  <select id = "department" class="form-control padded">
+                    <option>--</option>
+                    <option>Architectural Studies</option>
+                    <option>Computer Science</option>
+                    <option>Economics</option>
+                    <option>International Relations</option>
+                    <option>History</option>
+                    <option>Latin American Studies</option>
+                    <option>Mathematics</option>  
+                  </select>
+                  <label>by Department</label>   
+                  <br>               
+                  <select id = "term" class="form-control padded">
+                    <option>--</option>
+                    <option>Spring 2014</option>
+                    <option>Fall 2015</option>
+                    <option>Spring 2016</option>
+                    <option>Fall 2016</option>
+                  </select>
+                  <label>by Term</label>  
+                  <br>                
+                  <div class="form-group">
+                    <input type="text" name= "keyword" class="biginput form-control" id="keyword">
+                    <label>by Keywords</label> 
+                    <br>                   
+                    <input type="text" name= "instructor" class="biginput form-control" id="instructor">
+                    <label>by Instructor</label> 
+                    <br>             
                   </div>
-                  <div id = 'message padded'> </div>
-                </form>
-                <label>______________________</label>
-                <label>Add new menus:</label>
-                <input type="file" id="my_file_input"/>
-                <div class="form-actions padded">
-                    <button type="submit" onclick = "return submitFile()" class="btn btn-form btn-secondary">Upload</button> 
-                </div>
-                <div class = 'warning_message padded'> </div>
+                  <div class="form-actions" style = "text-align: center;"> 
+                    <button type="submit" id = "search-button" onclick = "return retrieveData()" class="btn btn-form btn-primary">Search</button> 
+                  </div>
+
              
             </nav></div>
-          <div class="pane">           
-            <h1 id = "title">Menu History</h1>  
-            <div class = "padded columns" id = "menus"></div>
-         </div>
+          <div id = "block_container">
+            <div class="pane" id = "classes">           
+              <h1 id = "title"><span id = "courseID"></span>: <span id="courseName"></span></h1>
+              <h2 id = "distReqs"></h2>  
+              <div class = "padded columns" style="padding-top: 0px;" "0px" id = "menus">
+                <span id = "Stars"></span> </br>
+                <img src = "img/instructor icon.png">
+                  <span class = "classInfo" id = "professor"></span></br>
+                <img src = "img/textbook icon.png">
+                  <span class = "classInfo" id = "textbook"></span> </br>
+            </div>
+            </div>
+          <div id = "placeholder"></div>
+          </div>
+          <script>
+
+            var margin = {top: 40, right: 20, bottom: 30, left: 40},
+                width = 420 - margin.left - margin.right,
+                height = 300 - margin.top - margin.bottom;
+
+            var formatPercent = d3.format(".0%");
+
+            var x = d3.scale.ordinal()
+                .rangeRoundBands([0, width], .1);
+
+            var y = d3.scale.linear()
+                .range([height, 0]);
+
+            var xAxis = d3.svg.axis()
+                .scale(x)
+                .orient("bottom");
+
+            var yAxis = d3.svg.axis()
+                .scale(y)
+                .orient("left")
+                .tickFormat(formatPercent);
+
+            var tip = d3.tip()
+              .attr('class', 'd3-tip')
+              .offset([-10, 0])
+              .html(function(d) {
+                return "<strong>Frequency:</strong> <span style='color:red'>" + d.frequency + "</span>";
+              })
+
+            var svg = d3.select("#placeholder").append("svg")
+                .attr("width", width + margin.left + margin.right)
+                .attr("height", height + margin.top + margin.bottom)
+              .append("g")
+                .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+            svg.call(tip);
+
+
+
+            var dict = {};
+            dict["A+"] = 0;
+            dict["A"] = 0;
+            dict["A-"] = 0;
+            dict["B+"] = 0;
+            dict["B"] = 0;
+            dict["B-"] = 0;
+            dict["C+"] = 0;
+            dict["C"] = 0;
+            dict["C-"] = 0;
+            dict["D+"] = 0;
+            dict["D"] = 0;
+            dict["D-"] = 0;
+            dict["F"] = 0;
+
+            var sum = 0.0
+
+            var request = new XMLHttpRequest;
+            var uri = 'https://classiapp.herokuapp.com/getclasses'
+            request.open("GET",uri, true);
+            request.onreadystatechange = function () {
+                if (request.readyState == 4 && request.status == 200) {
+                    var testGrades = JSON.parse(request.responseText);
+                    for (var i = 0; i < testGrades.length; i++) {
+                        if (testGrades[i]._id == "580209d1426297000356e26f") {
+                            for (var j = 0; j < testGrades[i].Grades.length; j++) {
+                                dict[testGrades[i].Grades[j]] += 1;
+                                sum += 1.0
+                            }
+                        }
+                    }
+                    var count_JSON = []
+
+                    console.log('test', dict);
+
+                    for (key in dict) {
+                        count_JSON.push({"letter": key, "frequency": dict[key] / sum})
+                    }
+
+
+                    console.log('test', count_JSON)
+
+                    x.domain(["A+", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "F"]);
+                    y.domain([0, .3]);
+                    // d3.max(data, function(d) { return d.frequency; })
+
+                    svg.append("g")
+                        .attr("class", "x axis")
+                        .attr("transform", "translate(0," + height + ")")
+                        .call(xAxis);
+
+                    svg.append("g")
+                        .attr("class", "y axis")
+                        .call(yAxis)
+                      .append("text")
+                        .attr("transform", "rotate(-90)")
+                        .attr("y", 6)
+                        .attr("dy", ".71em")
+                        .style("text-anchor", "end")
+                        .text("% of students");
+
+                    svg.selectAll(".bar")
+                        .data(count_JSON)
+                      .enter().append("rect")
+                        .attr("class", "bar")
+                        .attr("x", function(d) { return x(d.letter); })
+                        .attr("width", x.rangeBand())
+                        .attr("y", function(d) { return y(d.frequency); })
+                        .attr("height", function(d) { return height - y(d.frequency); })
+                        .on('mouseover', tip.show)
+                        .on('mouseout', tip.hide)
+                };
+            }
+            request.send(null);
+
+            </script>
+        </div>
       </div>
     </div>
   </body>

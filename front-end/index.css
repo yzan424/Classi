@@ -1,3 +1,23 @@
+@font-face {
+  font-family: "HelveticaNeue";
+  src: url("fonts/HelveticaNeueLTPro-Lt.otf");
+}
+
+#block_container
+{
+    text-align:center;
+}
+
+#placeholder{
+  display: block;
+  float: right
+}
+
+#classes{
+  display: block;
+  float: left
+}
+
 #alchemista_image{
 	display: block;
 	width: 75px;
@@ -9,12 +29,30 @@
 
 }
 #title{
-	font-family: 'Quicksand', sans-serif;
-	text-align: center;
-	color:#c7da2c;
+  font-family: 'HelveticaNeue';
+  text-align: left;
+  color: #9b9b9b;
   margin: 0;
-  padding: 10px 10px 2px;
+  padding: 10px 60px 0px;
 }
+
+#courseName {
+  color: #a1c1e4;
+}
+
+h2 {
+  font-size: 25px;
+}
+
+#distReqs{
+  font-family: 'HelveticaNeue', sans-serif;
+  text-align: left;
+  color: #9b9b9b;
+  font-size: 23px;
+  margin: 0;
+  padding: 0px 60px 2px;
+}
+
 .autocomplete-suggestions { border: 1px solid #999; background: #fff; cursor: default; overflow: auto; }
 .autocomplete-suggestion { padding: 10px 5px; font-size: 1.2em; white-space: nowrap; overflow: hidden; }
 .autocomplete-selected { background: #f0f0f0; }
@@ -37,12 +75,11 @@
   color: #858585;
 }
 body{
-  font-family: 'Quicksand', sans-serif;
-  
+  font-family: 'HelveticaNeue', sans-serif;
 }
 
 #dates{
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'HelveticaNeue', sans-serif;
   color:#c7da2c;
   font-weight: bold;
 }
@@ -73,15 +110,18 @@ body{
 }
 
 .columns{
-    -webkit-column-count: 3; /* Chrome, Safari, Opera */
-    -moz-column-count: 3; /* Firefox */
-    column-count: 3;
+    -webkit-column-count: 1; /* Chrome, Safari, Opera */
+    -moz-column-count: 1; /* Firefox */
+    column-count: 1;
     -webkit-column-gap: 40px; /* Chrome, Safari, Opera */
     -moz-column-gap: 40px; /* Firefox */
     column-gap: 40px;
     -webkit-column-rule-style: none; /* Chrome, Safari, Opera */
     -moz-column-rule-style: none; /* Firefox */
     column-rule-style: none;
+    font-size: 20px;
+    width: 40%;
+    padding-left: 60px;
 }
 h4{
   font-weight: bold;
@@ -121,60 +161,72 @@ li{
 
 }
 
-/*different method 
 
-ul li:nth-child(n+3) {
-    display:none;
+#Stars {
+  font-size: 50px;
+  color: #FDEB72;
 }
 
-span {
-    cursor: pointer;
-    color: #f00;
+.classInfo {
+  color: #9b9b9b;
 }
 
-*/
+.logo{
+  font-family: 'HelveticaNeue';
+  color = #a1c1e4;
+  padding-left: 10px;
+}
 
+label{
+  font-family: 'HelveticaNeue';
+}
 
-/*SHOW MORE TEST 
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
 
+.bar {
+  fill: #3E8EDE;
+}
 
+.bar:hover {
+  fill: #522C1B;
+}
 
-.read-more-state {
+.x.axis path {
   display: none;
 }
 
-.read-more-target {
-  opacity: 0;
-  max-height: 0;
-  font-size: 0;
-  /*transition: .25s ease; 
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 2px;
 }
 
-.read-more-state:checked ~ .read-more-wrap .read-more-target {
-  opacity: 1;
-  font-size: inherit;
-  max-height: 999em;
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
 }
 
-.read-more-state ~ .read-more-trigger:before {
-  content: 'Show more';
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
 }
-
-.read-more-state:checked ~ .read-more-trigger:before {
-  content: 'Show less';
-}
-
-.read-more-trigger {
-  cursor: pointer;
-  display: inline-block;
-  padding: 0 .5em;
-  color: #666;
-  font-size: .9em;
-  line-height: 2;
-  border: 1px solid #ddd;
-  border-radius: .25em;
-}
-
-*/
 
 
