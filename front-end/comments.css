@@ -3,6 +3,16 @@
 	width: 20px;
 }
 
-html {
-	
+#comments {
+    color: #676668;
+}
+
+.cmts {
+	font-size: 25px;
+	padding-bottom: 2%;
+}
+
+#cmtHeader {
+	font-size: 30px;
+	background: linear-gradient(to right, white, #9b9b9b);
 }

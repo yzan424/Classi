@@ -1,12 +1,14 @@
 var comments = [];
 var stars = [];
 var timestamp = [];
-var html = "<hr>";
+
+var header = "Comments";
+var html = '<hr>'; 
 var newhtml = "";
 var newstars = "";
 comments = ["hi", "yo", "classi", "test"];
 stars = [1, 5, 3, 4];
-timestamp = ["9:00", "10:30", "12:45", "1:00"];
+timestamp = ["10/31/1995", "12/1/2006", "11/11/1999", "12/4/2015"];
 grades = ["A", "B", "C", "D"];
 var index;
 
@@ -42,8 +44,9 @@ function sendcomments() {
     /* finish! */
 }
 
-
 function postComments() {
+
+	document.getElementById("cmtHeader").innerHTML = header;
 
 	for (i=0; i < comments.length; i++) {
 
@@ -54,15 +57,16 @@ function postComments() {
 		for(j=stars[i]; j<5; j++) {
 			html += '<span style="font-size:150%;color:#c5c1c1;">&star;</span>';
 		}
-		
-		html += "<br>" + '"' + comments[i] + '"' + "<br>" + 
-		        timestamp[i] + "<hr>" ;
+
+		html += "<br>" + '<div class="cmts">' + '"' + comments[i] + '"' + '</div>' + timestamp[i] + "<hr>";
 	}
 	document.getElementById("comments").innerHTML = html;
 }
 
 function displayStars() {
-	newhtml = '<div class="star"; onclick= redisplayStars(1)><span style="font-size:150%;color:#c5c1c1;">&star;</span></div>';
+	newhtml = '<hr>';
+
+	newhtml += '<div class="star"; onclick= redisplayStars(1)><span style="font-size:150%;color:#c5c1c1;">&star;</span></div>';
 	newhtml += '<div class="star"; onclick= redisplayStars(2)><span style="font-size:150%;color:#c5c1c1;">&star;</span></div>';
 	newhtml += '<div class="star"; onclick= "redisplayStars(3)"><span style="font-size:150%;color:#c5c1c1;">&star;</span></div>';
 	newhtml += '<div class="star"; onclick= "redisplayStars(4)"><span style="font-size:150%;color:#c5c1c1;">&star;</span></div>';
@@ -93,11 +97,12 @@ function redisplayStars(count) {
 
 function getTimeStamp() {
 	var d = new Date();
-    var h = d.getHours();
-    var m = d.getMinutes();
+    var day = d.getDate();
+    var month = d.getMonth() + 1;
+    var year = d.getFullYear();
 
     var newtime = [];
-    newtime[0] = h + ":" + m;
+    newtime[0] = month + "/" + day + "/" + year;
 
     timestamp = newtime.concat(timestamp);
 }
@@ -110,7 +115,7 @@ function recordComment() {
 
 	getTimeStamp();
 	document.getElementById("newcomments").innerHTML = "";
-	html = "<hr>";
+	html = '<hr>';
 	postComments();
 }
 
@@ -138,19 +143,6 @@ function displayGrade() {
 
 
 function getComments() {
-
-	displayStars();
-
-
-
-	/*newhtml = "<hr>" + '<label class="item item-input"><input type="comment" placeholder="comments" id="pass"></label>';*/
-
-    /*document.getElementById("newcomments").innerHTML = newhtml;   */ 
+	displayStars(); 
 }
 
-//comments
-//stars
-//grade
-
-
-//<span class="popuptext" id="myPopup">Popup text...</span>

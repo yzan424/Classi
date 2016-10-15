@@ -1,3 +1,8 @@
+@font-face {
+    font-family: "HelveticaNeue";
+    src: url("fonts/HelveticaNeueLTPro-Lt.otf"); 
+}
+
 #alchemista_image{
 	display: block;
 	width: 75px;
