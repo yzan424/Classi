@@ -71,7 +71,7 @@ function retrieveData(){
     keyword = $("#keyword").val();
     instructor = $("#instructor").val();
     //console.log(distribution)
-    var uri = 'https://classiapp.herokuapp.com/getclasses'
+    var uri = 'https://classiapp.herokuapp.com/getclasses';
     request.onreadystatechange = function() {
         var curr_class = "";
         if (request.readyState == 4 && request.status == 200) {
@@ -85,8 +85,8 @@ function retrieveData(){
                     (keyword == "" || classes[x].Name == keyword) &&
                     (instructor == "" || classes[x].Professors == instructor)) {
                     var curr_class = classes[x]._id;
-                    console.log(classes[x].Code)
-                    init("SOC-1");
+                    console.log(classes)
+                    init(classes, classes[x].Code);
                     displayShit(curr_class);
                     break;
                 }

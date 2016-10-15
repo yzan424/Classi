@@ -12,16 +12,17 @@ var index;
 var end;
 var add_comments_default = '<button id="addcommentsbutton" type="submit" onclick="return getComments()" class="btn btn-form btn-secondary">add comment</button>';
 
-function init(code) {
-	console.log("in init");
-	var url = "https://classiapp.herokuapp.com/getclasses";
-	request = new XMLHttpRequest();
-    request.onreadystatechange = function() {
-    	console.log(request.status)
-        if(request.readyState == 4 && request.status == 200) {
-            raw = request.responseText;
-            courses = JSON.parse(raw);
-            console.log(raw);
+function init(courses, code) {
+	//console.log("in init");
+	//var url = "https://classiapp.herokuapp.com/getclasses";
+	//var request = new XMLHttpRequest();
+	//console.log(request);
+    //request.onreadystatechange = function() {
+    	//console.log(request.status)
+        //if(request.readyState == 4 && request.status == 200) {
+           // raw = request.responseText;
+            //courses = JSON.parse(raw);
+            //console.log(raw);
             for (i=0; i<courses.length; i++) {
 	            if (code == courses[i].Code) {
 	            	console.log(courses[i].Comments[0][0]);
@@ -35,10 +36,10 @@ function init(code) {
             }
             end = courses[index].Comments.length;
             postComments();
-        }
-        	request.open("GET", url);
-    		request.send(null)
-    }
+        //}
+        	//request.open("GET", url);
+    		//request.send(null)
+    //}
     
 }
 
