@@ -10,10 +10,10 @@
 }
 #title{
 	font-family: 'Quicksand', sans-serif;
-	text-align: center;
+	text-align: left;
   color: rgb(62, 142, 222);
   margin: 0;
-  padding: 10px 10px 2px;
+  padding: 10px 60px 2px;
 }
 .autocomplete-suggestions { border: 1px solid #999; background: #fff; cursor: default; overflow: auto; }
 .autocomplete-suggestion { padding: 10px 5px; font-size: 1.2em; white-space: nowrap; overflow: hidden; }
@@ -61,7 +61,6 @@ body{
  flex: 0.5;
 }
 .composition{
-  width: ;
 }
 
 .fullMenu{
@@ -84,6 +83,7 @@ body{
     column-rule-style: none;
     font-size: 20px;
     width: 40%;
+    padding-left: 60px;
 }
 h4{
   font-weight: bold;
@@ -123,13 +123,18 @@ li{
 
 }
 
-#classInfo {
-
+#Stars {
+  font-size: 50px;
+  color: #FDEB72;
 }
 
 .classInfoElement {
   font-weight: bold;
   color: rgb(62, 142, 222);
+}
+
+.classInfo {
+
 }
 
 
