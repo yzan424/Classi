@@ -1,3 +1,4 @@
+var likes = []
 var comments = [];
 var stars = [];
 var timestamp = [];
@@ -15,6 +16,7 @@ function init(courses, code) {
 			comments.length = 0;
 			stars.length = 0;
 			timestamp.length = 0;
+			likes.length = 0
 
             for (i=0; i<courses.length; i++) {
 	            if (code == courses[i].Code) {
@@ -24,6 +26,7 @@ function init(courses, code) {
 		            	comments[j] = courses[i].Comments[j][0];
 		            	stars[j] = courses[i].Comments[j][1];
 		            	timestamp[j] = courses[i].Comments[j][2];
+		            	likes[j] = courses[i].Comments[j][3]
 	            	}
 	            }
             }
@@ -45,7 +48,7 @@ function sendcomments() {
     	}
 	}
 
-    request.send("comment=" + comments[end] + "&star=" + stars[end] +"&time=" + timestamp[end] + "&grade=" + newgrade + "&code=" + courses[index].Code); 
+    request.send("comment=" + comments[end] + "&star=" + stars[end] +"&time=" + timestamp[end] + "&grade=" + newgrade + "&code=" + courses[index].Code + "&likes=0"); 
     end = end + 1;
 }
 
@@ -64,7 +67,10 @@ function postComments() {
 			html += '<span style="font-size:150%;color:#c5c1c1;">&star;</span>';
 		}
 
-		html += "<br>" + '<div class="cmts">' + '"' + comments[i] + '"' + '</div>' + timestamp[i] + "<hr>";
+		if (likes[i] == undefined) likes[i] = 0;
+
+		html += "<br>" + '<div class="cmts">' + '"' + comments[i] + '"' + '</div>' + 
+		'&#128077;' + likes[i] + "<br>" + timestamp[i] + "<hr>";
 	}
 	document.getElementById("comments").innerHTML = html;
 	document.getElementById("addcomments").innerHTML = add_comments_default;
