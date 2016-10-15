@@ -66,6 +66,7 @@ var count = 0;
 var request = new XMLHttpRequest();
 
 function retrieveData(){
+    $("#placeholder").empty();
     distribution = $("#distribution").val();
     department = $("#department").val();
     keyword = $("#keyword").val();
@@ -86,8 +87,13 @@ function retrieveData(){
                     (instructor == "" || classes[x].Professors == instructor)) {
                     var curr_class = classes[x]._id;
                     console.log(classes)
+
                     init(classes, classes[x].Code);
-                    displayShit(curr_class);
+                    raw = request.responseText;
+                    courses = JSON.parse(raw);
+
+                    displayCourseInfo(curr_class);
+                    graph_math(curr_class);
                     break;
                 }
             }
